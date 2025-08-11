@@ -22,9 +22,14 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs",
-			"types": "./dist/index.d.ts"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
 		}
 	},
 	"main": "dist/index.cjs",
@@ -34,6 +39,8 @@
 		"dist/"
 	],
 	"scripts": {
+		"dev": "tsup --watch",
+		"build": "tsup",
 		"format": "bun format:plain .",
 		"format:plain": "biome format --write"
 	},
@@ -41,6 +48,7 @@
 		"@biomejs/biome": "2.1.4",
 		"@types/bun": "^1.2.20",
 		"lefthook": "^1.12.2",
+		"tsup": "^8.5.0",
 		"typescript": "^5.9.2"
 	},
 	"engines": {
