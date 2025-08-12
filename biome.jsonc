@@ -4,5 +4,13 @@
 		"formatter": {
 			"quoteStyle": "single"
 		}
+	},
+	"html": {
+		"formatter": {
+			"enabled": true
+		}
+	},
+	"files": {
+		"includes": ["**", "!**/dist/**"]
 	}
 }
