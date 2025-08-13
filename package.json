@@ -47,11 +47,14 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.1.4",
 		"@types/bun": "^1.2.20",
-		"lefthook": "^1.12.2",
+		"lefthook": "^1.12.3",
 		"tsup": "^8.5.0",
 		"typescript": "^5.9.2"
 	},
 	"engines": {
 		"node": ">=18"
+	},
+	"dependencies": {
+		"@swc/html": "^1.13.3"
 	}
 }
