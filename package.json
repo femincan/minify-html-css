@@ -45,7 +45,7 @@
 		"format:plain": "biome format --write"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.1.4",
+		"@biomejs/biome": "2.2.0",
 		"@types/bun": "^1.2.20",
 		"lefthook": "^1.12.3",
 		"tsup": "^8.5.0",
