@@ -58,6 +58,6 @@
 	},
 	"dependencies": {
 		"@swc/html": "^1.13.3",
-		"es-toolkit": "^1.39.9"
+		"es-toolkit": "^1.39.10"
 	}
 }
