@@ -1,0 +1,6 @@
+# Notice on Third-Party Code
+
+This project includes code and documentation adapted from the SWC Project (https://github.com/swc-project/swc), which is licensed under the Apache License, Version 2.0.
+The full text of the Apache License is included as LICENSE-APACHE in this repository.
+
+Modifications were made to the original code and documentation, including the removal and adaptation of certain options to fit this project’s requirements.
