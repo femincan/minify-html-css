@@ -57,7 +57,6 @@
 		"node": ">=18"
 	},
 	"dependencies": {
-		"@swc/html": "^1.13.3",
-		"es-toolkit": "^1.39.10"
+		"@swc/html": "^1.13.3"
 	}
 }
