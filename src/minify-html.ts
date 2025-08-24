@@ -3,7 +3,7 @@ import type { TransformOutput } from '@swc/html/binding';
 import type { MinifyHTMLOptions } from './minify-html-types';
 import { mergeOptions } from './utils/merge-options';
 
-export const disabledOptions = [
+const disabledOptions = [
 	'context-element',
 	'filename',
 	'forceSetHtml5Doctype',
