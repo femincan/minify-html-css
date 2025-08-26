@@ -1,1 +1,1 @@
-console.log('Hello World!');
+export { minifyHTML } from './minify-html';
