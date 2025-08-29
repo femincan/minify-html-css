@@ -1,6 +1,6 @@
 {
 	"name": "minify-html-css",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "🔽 A library to minify HTML and CSS.",
 	"keywords": [
 		"minify",
