@@ -32,13 +32,13 @@ export type MinifyHTMLOptions = {
 	/**
 	 * Specifies how whitespace should be collapsed and removed throughout the document.
 	 * - 'none': Preserve all whitespace as is.
-	 * - 'all': Remove all whitespace possible.
+	 * - 'all' (**default**): Remove all whitespace possible.
 	 * - 'smart': Collapse whitespace based on the CSS `display` property of elements.
 	 * - 'conservative': Collapse consecutive whitespace into one, remove all whitespace in the `<head>`, and trim whitespace in the `<body>`.
 	 * - 'advanced-conservative': Like 'conservative', but also removes whitespace between metadata elements (such as `<script>`, `<style>`, etc.).
-	 * - 'only-metadata' (**default**): Removes all whitespace in `<head>`, trims `<body>`, and removes whitespace between metadata elements (elements that are not rendered, like `<script>` or `<style>`).
+	 * - 'only-metadata': Removes all whitespace in `<head>`, trims `<body>`, and removes whitespace between metadata elements (elements that are not rendered, like `<script>` or `<style>`).
 	 *
-	 * @default 'only-metadata'
+	 * @default 'all'
 	 */
 	collapseWhitespaces?:
 		| 'none'
