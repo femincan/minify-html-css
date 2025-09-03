@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/femincan/minify-html-css/compare/v1.0.0...v1.0.1) (2025-09-03)
+
+
+### Bug Fixes
+
+* add build step to release workflow ([e210561](https://github.com/femincan/minify-html-css/commit/e2105616fec8fdeb34cec8a04bbfccb3e6ea385e))
+* update wrong default type for collapseWhitespaces option ([f5f0f1c](https://github.com/femincan/minify-html-css/commit/f5f0f1cb892083f1d658c63be58ceb8b4a255c9a))
+
 # 1.0.0 (2025-08-29)
 
 
