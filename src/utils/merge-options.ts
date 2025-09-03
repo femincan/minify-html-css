@@ -1,5 +1,4 @@
-export type OptionsObj = Record<string, unknown>;
-
+// biome-ignore-all lint/suspicious/noExplicitAny: the mergeOptions function is very dynamic and we should use any
 /**
  * Deeply merges two option objects, copying all enumerable properties from the source object into the target object.
  *
@@ -12,31 +11,37 @@ export type OptionsObj = Record<string, unknown>;
  *   - The callback receives `(key, targetValue, sourceValue, targetOptions, sourceOptions)`.
  * - The original objects are not mutated; a new merged object is returned.
  *
- * @param {OptionsObj} targetOptions
+ * @param {TargetOptions} targetOptions
  * The options object whose properties will be overwritten, extended, or merged with properties from `sourceOptions`.
- * @param {OptionsObj} sourceOptions
+ * @param {SourceOptions} sourceOptions
  * The options object whose properties will overwrite, extend, or merge with `targetOptions`.
  * @param {string[]} [disabledOptions]
  * Optional array of keys that should not be merged at the top level; these keys are preserved from the target.
- * @param {(key: string, targetValue: unknown, sourceValue: unknown, targetOptions: OptionsObj, sourceOptions: OptionsObj) => unknown | undefined} [callback]
+ * @param {(key: string, targetValue: any, sourceValue: any, targetOptions: TargetOptions, sourceOptions: SourceOptions) => any | undefined} [callback]
  * Optional function called for each top-level property in `sourceOptions`. If the callback returns a value other than `undefined`, that value is used as the merged property.
  *
  * **Caution:** The callback is not called for properties that exist only in `targetOptions` and not in `sourceOptions`; such properties are included in the merged result as is.
- * @returns {OptionsObj}
+ * @returns {TargetOptions & SourceOptions}
  * A new object representing a deep merge of `targetOptions` and `sourceOptions`, with `disabledOptions` respected at the top level only, and with possible callback overrides at the top level only.
  */
-export function mergeOptions(
-	targetOptions: OptionsObj,
-	sourceOptions: OptionsObj,
+export function mergeOptions<
+	TargetOptions extends Record<PropertyKey, any>,
+	SourceOptions extends Record<PropertyKey, any>,
+>(
+	targetOptions: TargetOptions,
+	sourceOptions: SourceOptions,
 	disabledOptions?: string[],
-	callback?: (
-		key: string,
-		targetValue: unknown,
-		sourceValue: unknown,
-		targetOptions: OptionsObj,
-		sourceOptions: OptionsObj,
-	) => unknown | undefined,
-): OptionsObj {
+	callback?: <
+		TargetValue extends TargetOptions[keyof TargetOptions],
+		SourceValue extends SourceOptions[keyof SourceOptions],
+	>(
+		key: keyof SourceOptions,
+		targetValue: TargetValue,
+		sourceValue: SourceValue,
+		targetOptions: TargetOptions,
+		sourceOptions: SourceOptions,
+	) => any | undefined,
+): TargetOptions & SourceOptions {
 	const mergedOptions = structuredClone(targetOptions);
 
 	for (const key in sourceOptions) {
