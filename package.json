@@ -49,15 +49,15 @@
 		"lint": "biome lint . --write"
 	},
 	"dependencies": {
-		"@swc/html": "^1.13.3"
+		"@swc/html": "^1.13.5"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.2.0",
+		"@biomejs/biome": "2.2.2",
 		"@commitlint/cli": "^19.8.1",
 		"@commitlint/config-conventional": "^19.8.1",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
-		"@types/bun": "^1.2.20",
+		"@types/bun": "^1.2.21",
 		"lefthook": "^1.12.3",
 		"semantic-release": "^24.2.7",
 		"tsup": "^8.5.0",
