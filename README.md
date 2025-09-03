@@ -2,8 +2,6 @@
 
 🔽 A JavaScript (TypeScript) library to minify HTML and CSS.
 
-This project provides a clean and easy-to-use interface for minifying HTML (and soon CSS) with well-documented options. It is designed to be fast, developer-friendly, and highly configurable for modern web projects.
-
 ---
 
 ## Table of Contents
