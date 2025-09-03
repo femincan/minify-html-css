@@ -24,7 +24,7 @@
 
 ## Intent
 
-I created this project to bring together the most performant HTML and CSS minifier libraries as clean, easy-to-use functions with well-documented options. The goal is to make web minification accessible, fast, and developer-friendly.
+I created this project to bring together the most performant HTML and CSS minifier libraries (according to my tests and findings) as clean, easy-to-use functions with well-documented options. The goal is to make web minification accessible, fast, and developer-friendly.
 
 ---
 
