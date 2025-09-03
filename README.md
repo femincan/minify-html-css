@@ -68,10 +68,10 @@ console.log(minifiedHtml); // "<div><h1>Hello World!</h1><style>body{color:red}<
 
 ## API Documentation
 
-### `minifyHTML(input: string, options?: MinifyHTMLOptions): string`
+### `minifyHTML(input: string, options?: MinifyHTMLOptions): TransformOutput`
 
 **Description:**
-Minifies an HTML string by removing unnecessary whitespace, comments, and compressing inline JS and CSS (where supported).
+Minifies an HTML string by removing unnecessary whitespace, comments, and compressing inline JS and CSS (where supported). Returns an object containing `code` property for transformed code and `errors` array for possible errors.
 
 > **Implementation note:**
 > This function is a wrapper around the [`@swc/html`](https://github.com/swc-project/swc/tree/main/packages/html) package and uses its minification logic under the hood.
