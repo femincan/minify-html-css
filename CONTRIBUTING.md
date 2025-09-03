@@ -54,9 +54,17 @@ Thank you for your interest in contributing to **minify-html-css**! Your help is
 
 ---
 
-## Code of Conduct
+## Automated Checks
 
-Please be respectful and considerate of others. For more details, see the [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) if available.
+- The automated commit format check will run before each commit. If it doesn't pass, please correct your commit format and try again.
+- The CI checks will run on each pull request to verify code style, linting, and tests. Please make sure all checks pass before requesting a review.
+
+---
+
+## License
+
+By contributing, you agree that your contributions will be licensed under the [MIT License](./LICENSE).  
+Some files (such as type definitions in [`src/minify-html-types.ts`](https://github.com/femincan/minify-html-css/blob/main/src/minify-html-types.ts)) are adapted from the SWC Project and are under the Apache License 2.0; see the [NOTICE](./NOTICE) and [LICENSE-APACHE](./LICENSE-APACHE) files for more details and required attributions.
 
 ---
 
