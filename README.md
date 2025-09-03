@@ -2,6 +2,10 @@
 
 🔽 A JavaScript (TypeScript) library to minify HTML and CSS.
 
+[![CI](https://github.com/femincan/minify-html-css/actions/workflows/ci.yml/badge.svg)](https://github.com/femincan/minify-html-css/actions/workflows/ci.yml)
+![NPM Version](https://img.shields.io/npm/v/minify-html-css)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+
 ---
 
 ## Table of Contents
