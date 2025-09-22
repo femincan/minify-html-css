@@ -3,8 +3,8 @@ import type { TransformOutput } from '@swc/html/binding';
 import type { MinifyHTMLOptions } from './minify-html-types';
 import { mergeOptions } from './utils/merge-options';
 
-const disabledOptions = [
-	'context-element',
+const disabledOptions: (keyof FragmentOptions)[] = [
+	'context_element',
 	'filename',
 	'forceSetHtml5Doctype',
 	'form_element',
