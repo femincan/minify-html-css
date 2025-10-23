@@ -4,3 +4,13 @@ This project includes code and documentation adapted from the SWC Project (https
 The full text of the Apache License is included as LICENSE-APACHE in this repository.
 
 Modifications were made to the original code and documentation, including the removal and adaptation of certain options to fit this project’s requirements.
+
+---
+
+This project includes code adapted from Lightning CSS (https://github.com/parcel-bundler/lightningcss), licensed under the Mozilla Public License, Version 2.0 (MPL-2.0).
+The full text of the MPL-2.0 license is included as LICENSE-MPL-2.0 in this repository.
+
+The file `src/minify-css-types.ts` contains type definitions copied and modified from Lightning CSS.
+Modifications include documentation changes and removal or adaptation of certain options to fit this project’s requirements.
+
+See the source files for details on which options are omitted or disabled from upstream projects.

@@ -108,11 +108,26 @@ The available options are:
 
 For detailed type definitions and documentation, see [`src/minify-html-types.ts`](https://github.com/femincan/minify-html-css/blob/main/src/minify-html-types.ts).
 
+### `minifyCSS(input: string, options?: MinifyCSSOptions): TransformResult`
+
+**Description:**
+Minifies CSS code by removing unnecessary whitespace, optimizing values, and applying various transformations.
+
+> **Implementation note:**
+> This function is a wrapper around the [`lightningcss`](https://github.com/parcel-bundler/lightningcss) package and uses its minification logic under the hood.
+
+**Parameters:**
+
+- `input` (`string`): The CSS code to minify.
+- `options?` (`MinifyCSSOptions`): Configuration object for fine-grained control.
+
+For detailed type definitions and documentation for options, see [`src/minify-css-types.ts`](https://github.com/femincan/minify-html-css/blob/main/src/minify-css-types.ts).
+
 ---
 
 ## TODO
 
-- [ ] Implement CSS minification function (`minifyCSS`) built on top of Lightning CSS
+- [x] Implement CSS minification function (`minifyCSS`) built on top of Lightning CSS
 - [ ] Implement CLI usage (command-line tool)
 
 ---
