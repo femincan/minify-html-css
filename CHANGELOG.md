@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/femincan/minify-html-css/compare/v1.0.2...v1.1.0) (2025-10-23)
+
+
+### Bug Fixes
+
+* make disabledOptions strictly typed and fix wrong option name ([b646922](https://github.com/femincan/minify-html-css/commit/b646922d6b9f1f8d2c0a8d3ef22b94c2afcfb46e))
+
+
+### Features
+
+* add minifyCSS function ([646162b](https://github.com/femincan/minify-html-css/commit/646162bf20ddcfe81c512f31e6c791deb6bc93c3))
+
 ## [1.0.2](https://github.com/femincan/minify-html-css/compare/v1.0.1...v1.0.2) (2025-09-03)
 
 ## [1.0.1](https://github.com/femincan/minify-html-css/compare/v1.0.0...v1.0.1) (2025-09-03)
