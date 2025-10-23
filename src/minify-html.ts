@@ -1,5 +1,4 @@
 import { type FragmentOptions, minifyFragmentSync } from '@swc/html';
-import type { TransformOutput } from '@swc/html/binding';
 import type { MinifyHTMLOptions } from './minify-html-types';
 import { mergeOptions } from './utils/merge-options';
 
@@ -25,10 +24,7 @@ const disabledOptions: (keyof FragmentOptions)[] = [
  * const result = minifyHTML('<p>   Hello World!         </p>');
  * console.log(result.code); // Outputs: '<p>Hello World!</p>'
  */
-export function minifyHTML(
-	input: string,
-	options?: MinifyHTMLOptions,
-): TransformOutput {
+export function minifyHTML(input: string, options?: MinifyHTMLOptions) {
 	const baseOptions: FragmentOptions = {
 		collapseWhitespaces: 'all',
 		sortSpaceSeparatedAttributeValues: false,
