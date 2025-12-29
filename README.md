@@ -15,6 +15,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Documentation](#api-documentation)
+- [CLI](#cli)
 - [TODO](#todo)
 - [Contributing](#contributing)
 - [License](#license)
@@ -152,11 +153,49 @@ minifyCSS(input).code; // "body{color:red}"
 
 ---
 
+### CLI
+
+This package also ships a CLI binary named `minify-html-css`.
+
+**Run via `npx` (no global install):**
+
+```bash
+npx minify-html-css -i input.html -o output.html
+npx minify-html-css -i styles.css -o styles.min.css
+```
+
+**Or install globally:**
+
+```bash
+npm install -g minify-html-css
+minify-html-css -i input.html -o output.html
+```
+
+**Options:**
+
+- `-i, --input <file>`: input file path (alternatively you can pass the input file as the first positional argument)
+- `-o, --output <file>`: output file path (if omitted, prints to stdout)
+- `-t, --type <html|css>`: file type (auto-detected from extension if omitted)
+- `-h, --help`: show help
+- `-v, --version`: show version
+
+**Examples:**
+
+```bash
+# Auto-detect file type from extension
+minify-html-css index.html > index.min.html
+
+# Force type when extension can't be detected
+minify-html-css -i input -t html > output.html
+```
+
+---
+
 ## TODO
 
 - [x] Implement HTML minification function (`minifyHTML`) built on top of `@swc/html`
 - [x] Implement CSS minification function (`minifyCSS`) built on top of `lightningcss`
-- [ ] Implement CLI usage (command-line tool)
+- [x] Implement CLI usage (command-line tool)
 
 ---
 
