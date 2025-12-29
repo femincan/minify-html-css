@@ -127,6 +127,7 @@ For detailed type definitions and documentation for options, see [`src/minify-cs
 
 ## TODO
 
+- [x] Implement HTML minification function (`minifyHTML`) built on top of `@swc/html`
 - [x] Implement CSS minification function (`minifyCSS`) built on top of Lightning CSS
 - [ ] Implement CLI usage (command-line tool)
 
