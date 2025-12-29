@@ -72,56 +72,83 @@ console.log(minifiedHtml); // "<div><h1>Hello World!</h1><style>body{color:red}<
 
 ### `minifyHTML(input: string, options?: MinifyHTMLOptions): TransformOutput`
 
-**Description:**
-Minifies an HTML string by removing unnecessary whitespace, comments, and compressing inline JS and CSS (where supported). Returns an object containing `code` property for transformed code and `errors` array for possible errors.
+#### minifyHTML: What it does
+
+Minifies an HTML string (whitespace, comments, attributes, inline assets depending on options).
+
+#### minifyHTML: Return value
+
+Returns the underlying `@swc/html` minifier result. In practice you’ll primarily use:
+
+- `code`: the minified HTML
+- `errors`: an array of parse/minification errors (if any)
 
 > **Implementation note:**
-> This function is a wrapper around the [`@swc/html`](https://github.com/swc-project/swc/tree/main/packages/html) package and uses its minification logic under the hood.
+> This is a small wrapper around [`@swc/html`](https://github.com/swc-project/swc/tree/main/packages/html) (SWC’s HTML minifier).
 
-**Parameters:**
+#### minifyHTML: Parameters
 
-- `input` (`string`): The HTML code to minify.
-- `options?` (`MinifyHTMLOptions`): Configuration object for fine-grained control.
+- `input` (`string`): HTML to minify.
+- `options?` (`MinifyHTMLOptions`): Optional configuration.
 
-The available options are:
+#### minifyHTML: Options
 
-| Option                              | Type                                                                                         | Default   | Description                                                                                              |
-| ----------------------------------- | -------------------------------------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------- |
-| `collapseWhitespaces`               | `'none' \| 'all' \| 'smart' \| 'conservative' \| 'advanced-conservative' \| 'only-metadata'` | `'all'`   | Controls how whitespace is collapsed and removed throughout the document.                                |
-| `removeEmptyMetadataElements`       | `boolean`                                                                                    | `true`    | Removes empty metadata elements such as `<script>`, `<style>`, `<meta>`, and `<link>`.                   |
-| `removeComments`                    | `boolean`                                                                                    | `true`    | Removes all HTML comments unless matched by `preserveComments`.                                          |
-| `preserveComments`                  | `string[]`                                                                                   |           | Array of regex strings; comments matching any are preserved. You can override the default patterns.      |
-| `minifyConditionalComments`         | `boolean`                                                                                    | `true`    | Minifies IE conditional comments.                                                                        |
-| `removeEmptyAttributes`             | `boolean`                                                                                    | `true`    | Removes empty attributes from HTML tags (when safe).                                                     |
-| `removeRedundantAttributes`         | `'none' \| 'all' \| 'smart'`                                                                 | `'smart'` | Controls removal of redundant or default attributes.                                                     |
-| `collapseBooleanAttributes`         | `boolean`                                                                                    | `true`    | Collapses boolean attributes to their short form (e.g. `checked`).                                       |
-| `normalizeAttributes`               | `boolean`                                                                                    | `true`    | Cleans up attribute values by removing unnecessary spaces, and strips `javascript:` from event handlers. |
-| `minifyJson`                        | `boolean \| { pretty?: boolean }`                                                            | `true`    | Minifies embedded JSON within `<script type="application/json">`.                                        |
-| `minifyJs`                          | `boolean`                                                                                    | `true`    | Minifies inline JavaScript.                                                                              |
-| `minifyCss`                         | `boolean`                                                                                    | `true`    | Minifies inline CSS.                                                                                     |
-| `minifyAdditionalScriptsContent`    | `[string, MinifierType][]`                                                                   |           | Minifies additional `<script>` types, specifying type pattern and minifier.                              |
-| `minifyAdditionalAttributes`        | `[string, MinifierType][]`                                                                   |           | Minifies additional attribute values, specifying attribute name pattern and minifier.                    |
-| `sortSpaceSeparatedAttributeValues` | `boolean`                                                                                    | `false`   | Sorts space-separated attribute values like `class` or `rel`.                                            |
-| `sortAttributes`                    | `boolean`                                                                                    | `false`   | Sorts all attributes of each element in reverse alphabetical order.                                      |
-| `tagOmission`                       | `boolean`                                                                                    | `true`    | Omits optional end tags when valid per HTML spec.                                                        |
-| `quotes`                            | `boolean`                                                                                    | `false`   | Always wrap attribute values in quotes.                                                                  |
+This package keeps the inline docs for options in the type files (with full JSDoc and defaults). Start here:
 
-For detailed type definitions and documentation, see [`src/minify-html-types.ts`](https://github.com/femincan/minify-html-css/blob/main/src/minify-html-types.ts).
+- [`src/minify-html-types.ts`](src/minify-html-types.ts) (HTML options + `MinifierType`)
+
+#### minifyHTML: Examples
+
+```ts
+import { minifyHTML } from 'minify-html-css';
+
+const input = `
+  <div>
+    <!-- hi -->
+  </div>
+`;
+
+// Keep HTML comments
+minifyHTML(input, { removeComments: false }).code; // "<div><!-- hi --></div>"
+```
 
 ### `minifyCSS(input: string, options?: MinifyCSSOptions): TransformResult`
 
-**Description:**
-Minifies CSS code by removing unnecessary whitespace, optimizing values, and applying various transformations.
+#### minifyCSS: What it does
+
+Minifies CSS using Lightning CSS.
+
+#### minifyCSS: Return value
+
+Returns the underlying `lightningcss` transform result, with one convenience tweak: `code` is returned as a `string` (not a `Buffer`).
 
 > **Implementation note:**
-> This function is a wrapper around the [`lightningcss`](https://github.com/parcel-bundler/lightningcss) package and uses its minification logic under the hood.
+> This is a wrapper around [`lightningcss`](https://github.com/parcel-bundler/lightningcss).
 
-**Parameters:**
+#### minifyCSS: Parameters
 
-- `input` (`string`): The CSS code to minify.
-- `options?` (`MinifyCSSOptions`): Configuration object for fine-grained control.
+- `input` (`string`): CSS to minify.
+- `options?` (`MinifyCSSOptions`): Optional configuration.
 
-For detailed type definitions and documentation for options, see [`src/minify-css-types.ts`](https://github.com/femincan/minify-html-css/blob/main/src/minify-css-types.ts).
+#### minifyCSS: Options
+
+See the full option surface (typed + documented) here:
+
+- [`src/minify-css-types.ts`](src/minify-css-types.ts)
+
+#### minifyCSS: Example
+
+```ts
+import { minifyCSS } from 'minify-html-css';
+
+const input = `
+  body {
+    color: red;
+  }
+`;
+
+minifyCSS(input).code; // "body{color:red}"
+```
 
 ---
 
