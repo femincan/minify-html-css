@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs';
 import { defineConfig } from 'tsup';
 
 export default defineConfig([
@@ -27,7 +26,7 @@ export default defineConfig([
 		minify: false,
 		outDir: 'dist',
 		env: {
-			VERSION: JSON.parse(readFileSync('./package.json').toString()).version,
+			VERSION: JSON.parse(await Bun.file('./package.json').text()).version,
 		},
 	},
 ]);
