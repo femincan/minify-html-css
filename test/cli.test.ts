@@ -1,8 +1,28 @@
-import { describe, expect, test } from 'bun:test';
+import { afterAll, beforeAll, describe, expect, test } from 'bun:test';
 import { detectFileType, parseOptions } from '../src/utils/cli-utils';
 
 describe('Utils', () => {
 	describe('parseOptions', () => {
+		let originalExit: NodeJS.Process['exit'];
+		let originalConsoleError: Console['error'];
+
+		beforeAll(() => {
+			originalExit = process.exit;
+			originalConsoleError = console.error;
+
+			// Replace process.exit to throw so the test runner doesn't exit
+			process.exit = (code) => {
+				throw new Error(`EXIT:${code ?? 0}`);
+			};
+			console.error = () => undefined;
+		});
+
+		afterAll(() => {
+			// Restore original functions
+			process.exit = originalExit;
+			console.error = originalConsoleError;
+		});
+
 		test('Empty input returns empty options', () => {
 			const opts = parseOptions([]);
 			expect(Object.keys(opts).length).toBe(0);
@@ -55,57 +75,19 @@ describe('Utils', () => {
 		});
 
 		test('Unknown option triggers process.exit(1)', () => {
-			const originalExit = process.exit;
-			const originalConsole = console.error;
-			let exitCalled = false;
-
-			// Replace process.exit to throw so the test runner doesn't exit
-			process.exit = (code) => {
-				exitCalled = true;
-				throw new Error(`EXIT:${code ?? 0}`);
-			};
-			console.error = () => undefined;
-
 			expect(() => parseOptions(['--unknown', 'value'])).toThrow('EXIT:1');
-			expect(exitCalled).toBe(true);
-
-			// Restore original functions
-			process.exit = originalExit;
-			console.error = originalConsole;
 		});
 
 		test('Extra positional argument triggers process.exit(1)', () => {
-			const originalExit = process.exit;
-			const originalConsole = console.error;
-
-			process.exit = (code) => {
-				throw new Error(`EXIT:${code ?? 0}`);
-			};
-			console.error = () => undefined;
-
 			expect(() => parseOptions(['input.html', 'extra.html'])).toThrow(
 				'EXIT:1',
 			);
-
-			process.exit = originalExit;
-			console.error = originalConsole;
 		});
 
 		test('Positional argument after -i/--input triggers process.exit(1)', () => {
-			const originalExit = process.exit;
-			const originalConsole = console.error;
-
-			process.exit = (code) => {
-				throw new Error(`EXIT:${code ?? 0}`);
-			};
-			console.error = () => undefined;
-
 			expect(() => parseOptions(['-i', 'input.html', 'extra.html'])).toThrow(
 				'EXIT:1',
 			);
-
-			process.exit = originalExit;
-			console.error = originalConsole;
 		});
 	});
 
