@@ -5,7 +5,7 @@ import { resolve } from 'node:path';
 import { minifyCSS, minifyHTML } from './index';
 import { detectFileType, type FileType, parseOptions } from './utils/cli-utils';
 
-export const helpText = `
+const helpText = `
 Usage: minify-html-css <input> [options]
 
 Positional arguments:
@@ -28,7 +28,7 @@ Examples:
 	minify-html-css ./path/to/file.css -o ./path/to/file.min.css
 `;
 
-export function main() {
+function main() {
 	const args = process.argv.slice(2);
 	const options = parseOptions(args);
 
