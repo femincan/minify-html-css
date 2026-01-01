@@ -43,7 +43,7 @@ function main() {
 	}
 
 	if (!options.input) {
-		console.error('Error: Input file is required');
+		console.error('Error: Input file is required.');
 		console.log(helpText);
 		process.exit(1);
 	}
@@ -57,7 +57,7 @@ function main() {
 			const normalizedType = options.type.toLowerCase();
 			if (normalizedType !== 'html' && normalizedType !== 'css') {
 				console.error(
-					'Error: Invalid file type. The file type must be "html" or "css"',
+					'Error: Invalid file type. The file type must be "html" or "css".',
 				);
 				process.exit(1);
 			}
@@ -67,7 +67,7 @@ function main() {
 			const detectedFileType = detectFileType(options.input);
 			if (!detectedFileType) {
 				console.error(
-					'Error: Could not detect file type. Please specify using -t option',
+					'Error: Could not detect file type. Please specify using -t option.',
 				);
 				process.exit(1);
 			}
@@ -90,16 +90,16 @@ function main() {
 		if (options.output) {
 			const outputPath = resolve(process.cwd(), options.output);
 			writeFileSync(outputPath, result.code, 'utf-8');
-			console.log(`Minified ${options.input} written to: ${outputPath}`);
+			console.log(`Minified ${options.input} written to: ${outputPath}.`);
 		} else {
 			// Write to stdout
 			console.log(result.code);
 		}
 	} catch (error) {
 		if (error instanceof Error) {
-			console.error(`Error: ${error.message}`);
+			console.error(`Error: ${error.message}.`);
 		} else {
-			console.error('An unknown error occurred');
+			console.error('An unknown error occurred.');
 		}
 		process.exit(1);
 	}

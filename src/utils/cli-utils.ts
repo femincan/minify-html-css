@@ -36,12 +36,12 @@ export function parseOptions(args: string[]): CLIOptions {
 				break;
 			default:
 				if (arg.startsWith('-')) {
-					console.error(`Unknown option: ${arg}`);
+					console.error(`Unknown option: ${arg}.`);
 					process.exit(1);
 				}
 
 				if (options.input) {
-					console.error(`Unknown positional argument: ${arg}`);
+					console.error(`Unknown positional argument: ${arg}.`);
 					process.exit(1);
 				}
 
