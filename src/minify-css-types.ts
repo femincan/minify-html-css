@@ -18,12 +18,12 @@ export type MinifyCSSOptions = {
 	};
 	/** Whether to enable parsing various draft syntax. */
 	drafts?: {
-		/** Whether to enable @custom-media rules. */
+		/** Whether to enable `@custom-media` rules. */
 		customMedia?: boolean;
 	};
 	/** Whether to enable various non-standard syntax. */
 	nonStandard?: {
-		/** Whether to enable the non-standard >>> and /deep/ selector combinators used by Angular and Vue. */
+		/** Whether to enable the non-standard `>>>` and `/deep/` selector combinators used by Angular and Vue. */
 		deepSelectorCombinator?: boolean;
 	};
 	/** Whether to compile this file as a CSS module. */
@@ -69,9 +69,9 @@ export type MinifyCSSOptions = {
 		focusWithin?: string;
 	};
 	/**
-	 * A list of class names, ids, and custom identifiers (e.g. @keyframes) that are known
+	 * A list of class names, ids, and custom identifiers (e.g. `@keyframes`) that are known
 	 * to be unused. These will be removed during minification. Note that these are not
-	 * selectors but individual names (without any . or # prefixes).
+	 * selectors but individual names (without any `.` or `#` prefixes).
 	 */
 	unusedSymbols?: string[];
 	/**
