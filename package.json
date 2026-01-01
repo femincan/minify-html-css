@@ -46,9 +46,10 @@
 	"scripts": {
 		"dev": "bun run --bun tsup --watch",
 		"build": "bun run --bun tsup",
-		"test": "bun test",
-		"test:all": "bun build && CLI=1 bun test",
-		"test:watch": "bun test --watch",
+		"test": "bun test --concurrent",
+		"test:watch": "bun run test --watch",
+		"pretest:all": "bun run build",
+		"test:all": "CLI_TESTS=1 bun run test",
 		"format": "biome format --write",
 		"lint": "biome lint . --write"
 	},
