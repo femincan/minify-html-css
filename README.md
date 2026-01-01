@@ -63,8 +63,26 @@ const html = `
   </div>
 `;
 
-const minifiedHtml = minifyHTML(html).code;
-console.log(minifiedHtml); // "<div><h1>Hello World!</h1><style>body{color:red}</style></div>"
+const result = minifyHTML(html).code;
+console.log(result); // "<div><h1>Hello World!</h1><style>body{color:red}</style></div>"
+```
+
+```typescript
+import { minifyCSS } from 'minify-html-css';
+
+const css = `
+  /* page styles */
+  :root { --main-color: red; }
+
+  body {
+    color: var(--main-color);
+    margin: 0;
+    line-height: 1.4;
+  }
+`;
+
+const result = minifyCSS(css).code;
+console.log(result); // ":root{--main-color:red}body{color:var(--main-color);margin:0;line-height:1.4}"
 ```
 
 ---
@@ -106,11 +124,13 @@ import { minifyHTML } from 'minify-html-css';
 const input = `
   <div>
     <!-- hi -->
+    Again
   </div>
 `;
 
 // Keep HTML comments
-minifyHTML(input, { removeComments: false }).code; // "<div><!-- hi --></div>"
+const result = minifyHTML(input, { removeComments: false }).code;
+console.log(result); // <div><!-- hi -->Again</div>
 ```
 
 ### `minifyCSS(input: string, options?: MinifyCSSOptions): TransformResult`
@@ -140,15 +160,26 @@ See the full option surface (typed + documented) here:
 #### minifyCSS: Example
 
 ```ts
-import { minifyCSS } from 'minify-html-css';
+import { minifyCSS, minifyHTML } from 'minify-html-css';
 
 const input = `
   body {
     color: red;
   }
+
+  @keyframes slidein {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
 `;
 
-minifyCSS(input).code; // "body{color:red}"
+// Remove unused @keyframes 'slidein'
+const result = minifyCSS(input, { unusedSymbols: ['slidein'] }).code;
+console.log(result); // body{color:red}
 ```
 
 ---
