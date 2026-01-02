@@ -1,3 +1,19 @@
+# [1.2.0](https://github.com/femincan/minify-html-css/compare/v1.1.0...v1.2.0) (2026-01-02)
+
+
+### Bug Fixes
+
+* add missing backticks to code examples in jsdoc comments ([086519f](https://github.com/femincan/minify-html-css/commit/086519f335aeba32369eacead1d9058dd50a32ca))
+* add missing periods to error messages ([25c90ca](https://github.com/femincan/minify-html-css/commit/25c90cab835cddaeceaa9cb3448ba1814a30007e))
+* ensure process exits after writing output to file or stdout ([0d8f054](https://github.com/femincan/minify-html-css/commit/0d8f05406ae9303675b3ab1d52f5d3263efdc277))
+* remove export statements from cli ([4c64540](https://github.com/femincan/minify-html-css/commit/4c6454068748f18b98be11e4eff96d5a50dec518))
+
+
+### Features
+
+* add cli functionality and tests ([96d16ea](https://github.com/femincan/minify-html-css/commit/96d16ea9c0a14506e6ffd08e42a42b5e70189f70))
+* restructure tsup configuration for library and CLI builds ([bc0184b](https://github.com/femincan/minify-html-css/commit/bc0184b17b2eb7deae261b7fcefe9ed36fc802b1))
+
 # [1.1.0](https://github.com/femincan/minify-html-css/compare/v1.0.2...v1.1.0) (2025-10-23)
 
 
