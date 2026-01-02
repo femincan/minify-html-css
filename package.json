@@ -51,7 +51,8 @@
 		"pretest:all": "bun run build",
 		"test:all": "CLI_TESTS=1 bun run test",
 		"format": "biome format --write",
-		"lint": "biome lint . --write"
+		"lint": "biome lint . --write",
+		"release": "semantic-release"
 	},
 	"dependencies": {
 		"@swc/html": "^1.15.7",
