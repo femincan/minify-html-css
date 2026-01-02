@@ -91,9 +91,11 @@ function main() {
 			const outputPath = resolve(process.cwd(), options.output);
 			writeFileSync(outputPath, result.code, 'utf-8');
 			console.log(`Minified ${options.input} written to: ${outputPath}.`);
+			process.exit(0);
 		} else {
 			// Write to stdout
 			console.log(result.code);
+			process.exit(0);
 		}
 	} catch (error) {
 		if (error instanceof Error) {
