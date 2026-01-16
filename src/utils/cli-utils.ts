@@ -1,3 +1,5 @@
+import { extname } from 'node:path';
+
 export type FileType = 'html' | 'css';
 export type CLIOptions = {
 	input?: string;
@@ -54,8 +56,8 @@ export function parseOptions(args: string[]): CLIOptions {
 }
 
 export function detectFileType(filePath: string): 'html' | 'css' | null {
-	const ext = filePath.split('.').pop()?.toLowerCase();
-	if (ext === 'html' || ext === 'htm') return 'html';
-	if (ext === 'css') return 'css';
+	const ext = extname(filePath).toLowerCase();
+	if (ext === '.html' || ext === '.htm') return 'html';
+	if (ext === '.css') return 'css';
 	return null;
 }
